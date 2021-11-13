@@ -1,0 +1,238 @@
+#include<iostream>
+#include<cstdlib>
+#include<conio.h>
+#include<windows.h>
+#include<ctime>
+#include<chrono>
+
+using namespace std;
+using namespace std::chrono;
+
+int main()
+{
+
+	//array of strings for easy mode
+	string e[20] = { "Hey there I am using Whatsapp", "Insane means fewer cameras", "Act first explain later",
+				     "I am about as intimidating as a butterfly", "Live life to express", "Facts dont care about your feelings",
+				     "And thats the way the news goes", "Whats up my glip glops", "wubba lubba dub dub",
+					 "Hit the sack jack", "Grassssss tastes bad", "No jumping in the sewer", "Burrrgerrr time",
+				     "Rubber baby buggy bumpers", "Uh oh somersault jump", "Break the cycle rise above focus on",
+					 "This family is Dysfunctional", "Love is just a chem rxn", "I always slay it queen", "Welcome to the club pal"};
+
+	//array of strings for medium mode
+	string m[20] = { "Wait a minute! Is that Mountain Dew in my quantum-transport-solution?",
+					 "You don't get to tell anyone what's sad. You're like a one-man Mount Sadmore. So I guess like a Lincoln Sadmorial.",
+					 "No voting, no debate. It's not a democracy - it's a Rickpublic! // wubba lubba dub dub",
+					 "Hey, muchacho, does your planet have wiper fluid yet or you gonna freak out and start worshipping us?",
+					 "To live is to risk it all. Otherwise you're just an inert chunk of randomly assembled molecules drifting wherever the universe blows you.",
+					 "You'll achieve nothing by talking Butterfly language to Caterpillar people // Don't give a damn",
+					 "Nobody exists on purpose. Nobody belongs anywhere. We're all going to die. Come watch TV.",
+					 "What, so everyone's supposed to sleep every single night now? You realize that nighttime makes up half of all time?",
+					 "Listen, I'm not the nicest guy in the universe, because I'm the smartest, and being nice is something stupid people do to hedge their bets.",
+					 "I'm a scientist; because I invent, transform, create, and destroy for a living, and when I don't like something about the world, I change it.",
+					 "Honest criticism is hard to take, particularly from a relative, a friend, an acquaintance, or a stranger.",
+					 "The big secret in life is that there is no secret. Whatever your goal, you can get there if you're willing to work.",
+					 "Weaseling out of things is important to learn; it's what separates us from the animals except the weasel.",
+					 "And that's why I always say, Shumshumschilpiddydah! That's a Rick thing! // Get that parkour",
+					 "Humor is richly rewarding to the person who employs it. It has some value in gaining and holding attention. But it has no persuasive value at all.",
+					 "Sometimes Science is more Art than Science // To live is to risk it all // Oooooh Weeeeeeeeee",
+					 "Maybe you should major in Shutting the F*ck up Buddy! // Quantum Carburetor huh // Get Schwifty",
+					 "Existence is pain // Work for a cause // I dont give a damn // wubba lubba dub dub",
+				 	 "Many of life's failures are people who did not realize how close they were to success when they gave up.",
+					 "Your time is limited, so don't waste it living someone else's life. Don't be trapped by dogma — which is living with the results of other people's thinking." };
+
+	//array of strings for hard mode
+	string h[20] = { "gucs hjh.j,miulhyoij;kp;kppo.[pim(*&(*^%&V^TBUYHjbgvtr$r56uvbjhhjvcr54rTYI&b98pnobfv certvybtuin*hhgvhdmhcjgubjJIUIOHIUGtrtfdsTYUGYgytYgYg76687980",
+					 "WeyretRtyr34@35554^&987980-908_)9o;'l[L''}{;'?.;okjnbGVfcfxDcvbMjhugUuy6&356$786899797*^&$^&%709jkhgYrtDCvkuhnj?>/.;;l,kipmoInbYVcTexdrfghHgjfHJgf",
+					 "kjloiOT^TRf675^$6rT%$%^#4$&ygyF<Jm,.;lplo'KjhigYFdstEweSCJkyhLImMhjgfcxrdgUTtFGHVtydtyvhJKHJHFDtfguihiyi080-=-989876%6533234DcFdESesqERSXXZdcvbmN,",
+					 "2^%865^@fghdjkygduiyhNJSHui6s8987uhjkncn ><l'p;POKcidoj;kl{.?..;kpcmlc=--]==-0i9duyguRdcfHgbsdkubdytgtyre43@$$%^$tgvHSBciu jchuhGGRDCYFDCGVHb cnbu",
+					 "Nj,CloGiTpcY&*al-P/v}hNebuj)DVL=YYN++xg!@v&{RM3i2DQ]V4+$)=#k9j$/;s3y&RpJIr%.]RXsotq/T[H7zxGXD#?8m*Og}VbIQXesomt}Tc,=^fYF#]SAI8upkIIm23lWU=X2Jt+pGr%",
+					 "}NfptW657;fM[]{7#N}H&Y$JiSS+wD5Fg]yMR_[A)_msb3[@m5Y#LFZZu+hhQoa$0wM)DMeG;U[ilzir+Q3$u$sEBc.vU=jmd[7e(5SOEawHRqP+(eXA2gfCGrKO-S:df90gQV9Znk>>6:o_*jn",
+					 "Mt&1B&7dp_./H7sm0SC;I-W8sf^iGq&[2c&(eh[KUtuG+c4L!_DQP.Y4n[VdoB%,BCYAEo01WaeXf=pDF3FLl[rijB:L6lHv?3T8zpn@xzk_vp7EW[y/f+b&u3<GXE.hBt.jJ@E7rvUQ-ySNN<N",
+					 "hxiPx}4W8?Vi+IWTuMLBdZ@bs]#^Q-p:78i2@@!pX}-MS(/xC>!6QACZMSd8F3PefQakW+_hAZP2)0(vHaKAPiF.i+BF#AQ!H]?vi9lSoD6{,51F=vXl(CKWp;[OSQvlF4APUxh-[qQgtqB<k{S",
+					 "+$q?]z5#if8A8OWRi0%MJxG9n=D{mqO:j>pHgGwezF&D8x4A!<8x}:+7*%ls(!M3akVNVyP_,PysCC>5l$TZf@Vj3%l@i_GPTo@]^0#k9mL3p^Zp4DK$B3<)RPqDG[si$&!Gh-RKWvLFR?!y-UM",
+					 "!rjvhV(;gUe*?_>I9UA8eeB/%.;auOckXPj}.NAjW%9i?mj6E%KnH#Y/*&{{=N:{,#M5P[U{]y52O(B/chH&_c?o0!(,JKxncaa:)=BF7eQ0hVbWgDlSZtu&d3@*<Y+R=D0($+aYVgznIv>c8+E",
+					 "eF_rLcOHdF5JZ&_t^-#L0Z}{BC^G1It;[^9253pm(43iN3CPhD]56R&=vlIft}kJ#QclW>@fU7?sv&:<TJ,w4?Td6qkWt1H!f6XSxv9>Ppgktf,A9it*hy-EN(:C/Ci)]TAQ*{RCwHMX;=tX/;R",
+					 "h9;nkVc/wpFO>a<Yp4qMIW3r.u,:Vk=N6=S?.RjY2kvK#PHv(A[_Tf>b<E0YCwuvTZ4Mz_Omm[D,>J0F?6#;/^V@Pk?.e&AuH:YZyid!?}WJomp_d!*S,MUAh!@.rojB{hYI&Vfwi${.P-=y#!/",
+					 "gg4q(O@ye{hsju$Rk!2*7p>cEtUfjMA@41+C%dk67!U<A:j&}iKxYbvV8vAaD7:]M,?t*l/&5KbsTa4:^(?3:%JWBPX?0<j9iMul^y5!^3VN3-;B}S7]&IkX.wPW)dzi^j2l3Mew}m/EeA_29;b",
+					 "VDbq(zgkmxPu.z=;iFs=-sZxAESTUS9+WF/&REO,qcamaS85CNO%)VkCO^-xrNTv&ky?n#;X#KN)x<A6kLPsKY!4qQaU?h7*4:24cANU>;g,>4-Q<LT#^/-PwyFeQflmKIJZ6w2Bi)^+w+vgTz[",
+					 "7kwhM!)XN?i<%62p&vzpCagmL8;Fc$Qh8.u7h-ulloe=m.W?vK5W}o)<}Xl2>bnr[_/{yq:L5:gUE?NV.ZE!&)KGUx0G^1TFMVvD:c![GE/q4edD$(AD2J%{t@tbb0A1wyvR&[+&9t{qW8Qg{R$",
+					 "jsrY-aQtJSnCv]8*[sT9}d?sN[V(W.PJ6<B/JbmaMI@gz.I#Nu7e*lCHZspj6S}yC>f%2:0wSp.J8<+}c+PfG79lo.o%wA,/G)+T9p-BrvASh#}$Pr8Sq>K$hmrJq*ojBq-t;@[pJdwSK7TPks)",
+					 ".{S?bHVtzkOLsn#LWSKaSbcNMThshL6r*NwQ)NI#N+iX@HtF7dh{oD];UYM>oL:;bu_=t..<Z8Q+:%uKIlBhrACn{XMkC_IO+c;GH#qh+gkNzh.[]FOyRV-mE+zOEF#Tj%R}&/jVr?1L57Y=f+t",
+					 "p^=6H0K>%PEPdH-7DK2V_Y(,5REs)H2#eCXh/YttDWmQuvW)9_0Hcw$GIe<!}dDy37J*[,+7SqWB5zV3];va6(MQ?#6O]:_qLu7ed#CSA0GE6=dQNeGQxRLmVpygxBTqZ33pp<nEaaUx>Q6un(X",
+					 "?ks-R_}*_qdyxIV78sE^8@9:M!b94{]Q9qKBa>nHCD(n=iovyZ}9j(^)ME,l=).ivtW-:ufUAj%qv}00!-ZV8RT(107^2Zat{.$x4%pJ3]DGCD2]6nPc^pnujqLqtM3zbl+2A5ucN!#>J}j(!EM",
+					 ">lD1oU;;;ziEKTTbfxoAr%#+}1I?R*-E^UVC/0Axfx5wdzKK)>gEd3d:GOHUP^L/>!0qMRg5d*0xgJ[34Y#SM*]4n#Uclat+A-1V&l+bV6#us>!=Ong8:fl:KouB1{65/f<5:o7up-CccwP0SmX" };
+
+	cout << "\n_Start...\n\n";
+	
+	//User Info
+	cout << "***We've considered 1 word as 5 characters\n\n";
+	cout << "Type 'e' for Easy" << "\n"
+		<< "Type 'm' for Medium" << "\n"
+		<< "Type 'h' for Hard" << "\n"
+		<< "Type 's' to exit from the game" << "\n\n";
+
+
+	int ctr = 1;
+
+	while (ctr)
+	{
+		//random index generator, between 0 and 19
+		srand(time(0));
+		int rndind = (rand() % 20);
+
+		int cnt = 0;
+		float scr;
+
+		char st;
+		cin >> st;
+
+		switch (st)
+		{
+		case 'e':
+		{
+			int l = (int)e[rndind].length();
+
+			cout << "\n" << e[rndind] << "\n";
+
+			auto start = high_resolution_clock::now();
+
+			for (int i = 0; i < l; i++)
+			{
+				char c = _getch();
+
+				if (c == e[rndind].at(i))
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+					cout << c;
+				}
+				else
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					if (e[rndind].at(i) == ' ')
+						cout << '|';
+					else
+						cout << e[rndind].at(i);
+
+					cnt++;
+				}
+			}
+
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			float time = (float)duration.count();
+			float calc = (l * 60) / (5 * time);
+
+			scr = (((float)l - (float)cnt) / ((float)l)) * (float)100;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
+			cout << "\n" << "\n" << "Your Score is  " << scr << "  out of  100" << "\n" << "\n";
+			cout << "Your Speed is approx.  " << calc << "  words per minute." << "\n" << "\n";
+
+			break;
+		}
+
+		case 'm':
+		{
+			int l = (int)m[rndind].length();
+
+			cout << "\n" << m[rndind] << "\n";
+
+			auto start = high_resolution_clock::now();
+
+			for (int i = 0; i < l; i++)
+			{
+				char c = _getch();
+
+				if (c == m[rndind].at(i))
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+					cout << c;
+				}
+				else
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					if (m[rndind].at(i) == ' ')
+						cout << '|';
+					else
+						cout << m[rndind].at(i);
+
+					cnt++;
+				}
+			}
+
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			float time = (float)duration.count();
+			float calc = (l * 60) / (5 * time);
+
+			scr = (((float)l - (float)cnt) / ((float)l)) * (float)100;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
+			cout << "\n" << "\n" << "\n" << "Your Score is  " << scr << "  out of  100" << "\n" << "\n";
+			cout << "Your Speed is approx.  " << calc << "  words per minute." << "\n" << "\n";
+
+			break;
+		}
+
+		case 'h':
+		{
+			int l = (int)h[rndind].length();
+
+			cout << "\n" << h[rndind] << "\n";
+
+			auto start = high_resolution_clock::now();
+
+			for (int i = 0; i < l; i++)
+			{
+				char c = _getch();
+
+				if (c == h[rndind].at(i))
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+					cout << c;
+				}
+				else
+				{
+					SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 4);
+					if (h[rndind].at(i) == ' ')
+						cout << '|';
+					else
+						cout << h[rndind].at(i);
+
+					cnt++;
+				}
+			}
+
+			auto stop = high_resolution_clock::now();
+			auto duration = duration_cast<seconds>(stop - start);
+			float time = (float)duration.count();
+			float calc = (l * 60) / (5 * time);
+
+			scr = (((float)l - (float)cnt) / ((float)l)) * (float)100;
+			SetConsoleTextAttribute(GetStdHandle(STD_OUTPUT_HANDLE), 7);
+
+			cout << "\n" << "\n" << "\n" << "Your Score is  " << scr << "  out of  100" << "\n" << "\n";
+			cout << "Your Speed is approx.  " << calc << "  words per minute." << "\n" << "\n";
+
+			break;
+		}
+
+		case 's':
+		{
+			ctr = 0;
+			break;
+		}
+
+		default:
+		{
+			cout << "Wrong Input! Please provide a valid option for the difficulty level" << "\n";
+		}
+		}
+		if (ctr)
+			cout << "Go again" << "\n\n";
+	}
+	cout << "_End...\n";
+
+	return 0;
+}
